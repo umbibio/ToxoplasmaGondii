@@ -3,4 +3,6 @@
 ## Toxoplasma Gondii Virulence of the parasite Toxoplasma Gondii depends on multiple factors. Although virulence factor expression is tightly regulated, the molecular mechanism controlling their regulation has been poorly understood. In this project we are taking the advantage of several computational approaches to study the regulators of such virulence traits. 
 
 ## update master branch 
->>>>>>> 1f8298e75c8cffb602f7ec8cf8ba94e0f08ac117
+
+
+### update local branch 
