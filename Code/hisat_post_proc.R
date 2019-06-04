@@ -7,7 +7,7 @@ library(tidyverse)
 
 #### Test the files
 #### This folder contains the output of feature count. Change as appropriate
-fc.files.dir  <- "../RNAseqCounts/"
+fc.files.dir  <- "../Input/RNAseqCounts/"
 ### My feature coutn file names end in counts.txt, hence the grep. Change if not needed
 fc.files      <- file.path(fc.files.dir, list.files(fc.files.dir)[grep("counts.txt$", list.files(fc.files.dir))])
 
@@ -29,7 +29,7 @@ RunInfo <- data.frame(Sample = gsub('_S.*', '', gsub('.counts.txt', '', basename
                       Count = paste('Count', 1:length(fc.files), sep = ''),
                       stringsAsFactors = F)
 ## This was manually constructed from RNAseq Info excell files
-RNAseqInfo <- read.xlsx('../RNAseqCounts/sampleInfo.xlsx')
+RNAseqInfo <- read.xlsx('../Input/RNAseqCounts/sampleInfo.xlsx')
 RNAseqInfo <- left_join(RNAseqInfo, RunInfo, by = c('Sample.ID' = 'Sample'))
 
 RNAseqInfo.B2 <- RNAseqInfo %>% dplyr::filter((Clone == 'B2' | Clone == 'RH' | Clone == 'B') & cond != 'fresh')
@@ -51,7 +51,7 @@ treatment <- factor(treatment, levels = unique(treatment))
 y <- DGEList(counts=x, group=treatment)
 y <- calcNormFactors(y)
 y$samples
-#plotMDS(y)
+plotMDS(y)
 
 #design <- model.matrix(~0+treatment, data=y$samples)
 #colnames(design) <- levels(y$samples$group)
