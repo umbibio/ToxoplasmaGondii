@@ -9,7 +9,7 @@ library(tidyverse)
 #### This folder contains the output of feature count. Change as appropriate
 fc.files.dir  <- "../Input/RNAseqCounts/"
 ### My feature coutn file names end in counts.txt, hence the grep. Change if not needed
-fc.files      <- file.path(fc.files.dir, list.files(fc.files.dir)[grep("counts.txt$", list.files(fc.files.dir))])
+fc.files  <- file.path(fc.files.dir, list.files(fc.files.dir)[grep("counts.txt$", list.files(fc.files.dir))])
 
 ## Creating the count table. The first column isgene ID
 f <- read.table(fc.files[1], header = T, sep = '\t', stringsAsFactors = F)
@@ -54,9 +54,9 @@ y$samples
 plotMDS(y)
 
 #design <- model.matrix(~0+treatment, data=y$samples)
-#colnames(design) <- levels(y$samples$group)
-#y <- estimateDisp(y,design)
-#plotBCV(y)
+# colnames(design) <- levels(y$samples$group)
+# y <- estimateDisp(y,design)
+# plotBCV(y)
 
 
 
@@ -93,7 +93,7 @@ clusters <- hclust(dist(t(logCPM_no_batch)))
 plot(clusters)
 
 ## Seems like batch effect is corrected and clustres represent extra vs intra.
-#heatmap(logCPM_no_batch,cexCol = 0.5)
+heatmap(logCPM_no_batch,cexCol = 0.5)
 plotMDS(logCPM_no_batch, cex = 0.6) 
 
 
