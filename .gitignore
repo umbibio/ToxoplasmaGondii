@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-Input/
-Output/
+Input/*
+Output/*
 .DS_Store
 ToxoPlasmaGondiiR.Rproj
