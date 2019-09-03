@@ -6,3 +6,5 @@ Input/*
 Output/*
 .DS_Store
 ToxoPlasmaGondiiR.Rproj
+*.~
+.gitignore~
