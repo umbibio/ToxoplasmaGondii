@@ -122,12 +122,13 @@ colnames(survival_sep_rep) <- c('y', 'tme', 'ind', 'variable')
 phenotypes_sep_rep <- rbind(plaque_sep_rep, reinvasion_sep_rep, replication_sep_rep, survival_sep_rep)
 tc <- phenotypes_sep_rep %>% na.omit()
 
+## This takes a while to run. So the rds file of the fit is provided in the input directory.                
 ## Fit a Smoothing Spline Mixed Effect Model.
-pheno.fits <- lapply(unique(tc$variable),function(v) 
-  fitSingleSme(tc, v))
-#saveRDS(object = pheno.fits ,file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_pheno.RData")
-saveRDS(object = pheno.fits ,file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_phenoV2.RData")
-#pheno.fits <- readRDS(file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_phenoV2.RData")
+#pheno.fits <- lapply(unique(tc$variable),function(v) 
+#  fitSingleSme(tc, v))
+#saveRDS(object = pheno.fits ,file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_phenoV2.RData")
+
+pheno.fits <- readRDS(file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_phenoV2.RData")
 
 ## Read in expression values for each replicate
 expr_sep_rep <- read.xlsx('../toxo_table_batch_corrected_logCPM_expression_edgeR_DEGs_ap2_targs.xlsx')
@@ -153,11 +154,12 @@ expr_sep_rep.extra <- expr_sep_rep.extra[,c('Expr', 'Passage', 'Rep', 'GeneName'
 colnames(expr_sep_rep.extra) <- c('y', 'tme', 'ind', 'variable')
 
 ## Fit a smoothing spline mixed effect model to each gene
-tc.expr <- expr_sep_rep.extra %>% na.omit()
-expr.fits <- lapply(unique(tc.expr$variable),function(v) 
-  fitSingleSme(tc.expr, v))
-saveRDS(object = expr.fits,file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_exprs.RData")
-#expr.fits <- readRDS(file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_exprs.RData")
+## This takes a while to run. So, the rds file of the fit is provided                
+#tc.expr <- expr_sep_rep.extra %>% na.omit()
+#expr.fits <- lapply(unique(tc.expr$variable),function(v) 
+#  fitSingleSme(tc.expr, v))
+#saveRDS(object = expr.fits,file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_exprs.RData")
+expr.fits <- readRDS(file = "~/work/ToxoplasmaGondii/ToxoR/output/sme_fits_exprs.RData")
 
 # expr.fits <- list()
 # counter = 1
@@ -191,13 +193,6 @@ cor.mat <- left_join(cor.mat.p, cor.mat.s, by = 'GeneName')
 
 sep_rep <- left_join(expr_sep_rep, cor.mat, by = 'GeneName')
 write.xlsx(sep_rep, '../toxo_table_batch_corrected_logCPM_expression_edgeR_DEGs_ap2_targs_phenotype_correlations_smeV2.xlsx')
-
-
-### Make a 4 Way matirx with correlations, AP2 targets, gene sets and DEGs.
-ThreeWay <- read.xlsx('../ThreeWayDEGoverlaps.xlsx')
-FourWay <- left_join(ThreeWay, cor.mat, by = 'GeneName')
-#write.xlsx(FourWay, '../FourWayDEGoverlaps_sme.xlsx')
-write.xlsx(FourWay, '../FourWayDEGoverlaps_smeV2.xlsx')
 
 
 AP2.extra <- sep_rep %>% dplyr::filter(!is.na(Product.Description)) %>% 
