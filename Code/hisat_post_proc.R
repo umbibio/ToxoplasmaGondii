@@ -5,7 +5,7 @@ library(gplots)
 library(dplyr)
 library(tidyverse)
 
-#### Test the files
+
 #### This folder contains the output of feature count. Change as appropriate
 fc.files.dir  <- "../Input/RNAseqCounts/"
 ### My feature coutn file names end in counts.txt, hence the grep. Change if not needed
