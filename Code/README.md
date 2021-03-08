@@ -6,4 +6,8 @@ This page provide instructions for running statistical analysis on preprocessed 
 * Mixed-effect Regression Analysis
 * Enrichment Analysis
 * Clustering Analysis
-* 
+
+# Data Availability
+
+The RNAseq read raw counts for each sample (obtained by featureCount) are available at ... . Other data required to run each analysis are provided in the input folder.  
+
