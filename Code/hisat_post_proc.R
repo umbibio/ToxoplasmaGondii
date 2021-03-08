@@ -204,42 +204,73 @@ getBatchDEG <- function(case, control, batch, treatment, x){
 
 
 myContrasts <- function(){
-  contrasts <- data.frame(case = rep('', 23), control = rep('', 23), stringsAsFactors = F)
+  contrasts <- data.frame(case = rep('', 43), control = rep('', 43), stringsAsFactors = F)
   
-  ## Extra over Intra
-  contrasts$case[1] <- 'intra.P7';   contrasts$control[1] <- 'extra.P7'
-  contrasts$case[2] <- 'intra.P11';  contrasts$control[2] <- 'extra.P11'
-  contrasts$case[3] <- 'intra.P85';  contrasts$control[3] <- 'extra.P85'
-  contrasts$case[4] <- 'intra.P148'; contrasts$control[4] <- 'extra.P148'
+  ## Extra over Intra (extra.vs.intra)
+  contrasts$case[1] <- 'intra.P11';  contrasts$control[1] <- 'extra.P11'
+  contrasts$case[2] <- 'intra.P85';  contrasts$control[2] <- 'extra.P85'
+  contrasts$case[3] <- 'intra.P148'; contrasts$control[3] <- 'extra.P148'
   
-  ## Intra over Intra
-  contrasts$case[5] <- 'intra.P7';  contrasts$control[5] <- 'intra.P11'
-  contrasts$case[6] <- 'intra.P11'; contrasts$control[6] <- 'intra.P85'
-  contrasts$case[7] <- 'intra.P85'; contrasts$control[7] <- 'intra.P148'
+  ## Intra over Intra (intra.vs.intra)
+  contrasts$case[4] <- 'intra.P11'; contrasts$control[4] <- 'intra.P85'
+  contrasts$case[5] <- 'intra.P11'; contrasts$control[5] <- 'intra.P148'
+  contrasts$case[6] <- 'intra.P85'; contrasts$control[6] <- 'intra.P148'
   
-  ## Extra over Extra
-  contrasts$case[8]  <- 'extra.P7';   contrasts$control[8] <- 'extra.P11'
-  contrasts$case[9]  <- 'extra.P11';  contrasts$control[9] <- 'extra.P35'
-  contrasts$case[10] <- 'extra.P35';  contrasts$control[10] <- 'extra.P55'
-  contrasts$case[11] <- 'extra.P55';  contrasts$control[11] <- 'extra.P148'
-  contrasts$case[12] <- 'extra.P148'; contrasts$control[12] <- 'extra.P210'
+  ## Extra over Extra  (extra.vs.extra)
+  contrasts$case[7]  <- 'extra.P11';  contrasts$control[7]  <- 'extra.P35'
+  contrasts$case[8]  <- 'extra.P11';  contrasts$control[8]  <- 'extra.P55'
+  contrasts$case[9]  <- 'extra.P11';  contrasts$control[9]  <- 'extra.P85'
+  contrasts$case[10] <- 'extra.P11';  contrasts$control[10] <- 'extra.P148'
+  contrasts$case[11] <- 'extra.P11';  contrasts$control[11] <- 'extra.P210'
+  contrasts$case[12] <- 'extra.P35';  contrasts$control[12] <- 'extra.P55'
+  contrasts$case[13] <- 'extra.P35';  contrasts$control[13] <- 'extra.P85'
+  contrasts$case[14] <- 'extra.P35';  contrasts$control[14] <- 'extra.P148'
+  contrasts$case[15] <- 'extra.P35'; contrasts$control[15] <- 'extra.P210'
+  contrasts$case[16] <- 'extra.P55';  contrasts$control[16] <- 'extra.P85'
+  contrasts$case[17] <- 'extra.P55';  contrasts$control[17] <- 'extra.P148'
+  contrasts$case[18] <- 'extra.P55'; contrasts$control[18] <- 'extra.P210'
+  contrasts$case[19] <- 'extra.P85';  contrasts$control[19] <- 'extra.P148'
+  contrasts$case[20] <- 'extra.P85'; contrasts$control[20] <- 'extra.P210'
+  contrasts$case[21] <- 'extra.P148'; contrasts$control[21] <- 'extra.P210'
   
-  ## RH over RH
-  contrasts$case[13] <- 'intra.RH'; contrasts$control[13] <- 'extra.RH'
   
-  ## Intra over RH
-  contrasts$case[14] <- 'intra.RH'; contrasts$control[14] <- 'intra.P7';
-  contrasts$case[15] <- 'intra.RH'; contrasts$control[15] <- 'intra.P11';
-  contrasts$case[16] <- 'intra.RH'; contrasts$control[16] <- 'intra.P85'
-  contrasts$case[17] <- 'intra.RH'; contrasts$control[17] <- 'intra.P148'
   
-  ## Extra over RH
-  contrasts$case[18] <- 'extra.RH'; contrasts$control[18] <- 'extra.P7';
-  contrasts$case[19] <- 'extra.RH'; contrasts$control[19] <- 'extra.P11';
-  contrasts$case[20] <- 'extra.RH'; contrasts$control[20] <- 'extra.P35'
-  contrasts$case[21] <- 'extra.RH'; contrasts$control[21] <- 'extra.P55'
-  contrasts$case[22] <- 'extra.RH'; contrasts$control[22] <- 'extra.P148'
-  contrasts$case[23] <- 'extra.RH'; contrasts$control[23] <- 'extra.P210'
+  ## Intra over B P7 (intra.vs.B.intra)
+  contrasts$case[22] <- 'intra.P7'; contrasts$control[22] <- 'intra.P11'
+  contrasts$case[23] <- 'intra.P7'; contrasts$control[23] <- 'intra.P85'
+  contrasts$case[24] <- 'intra.P7'; contrasts$control[24] <- 'intra.P148'
+  
+  ## Extra over B P7 (extra.vs.B.extra)
+  contrasts$case[25] <- 'extra.P7';  contrasts$control[25] <- 'extra.P11'
+  contrasts$case[26] <- 'extra.P7';  contrasts$control[26] <- 'extra.P35'
+  contrasts$case[27] <- 'extra.P7';  contrasts$control[27] <- 'extra.P55'
+  contrasts$case[28] <- 'extra.P7';  contrasts$control[28] <- 'extra.P85'
+  contrasts$case[29] <- 'extra.P7';  contrasts$control[29] <- 'extra.P148'
+  contrasts$case[30] <- 'extra.P7';  contrasts$control[30] <- 'extra.P210'
+  
+  
+  ## RH over RH (RH.vs.RH)
+  contrasts$case[31] <- 'intra.RH'; contrasts$control[31] <- 'extra.RH'
+  
+  ## RH over Intra (RH.vs.intra)
+  contrasts$case[32] <- 'intra.P11';  contrasts$control[32] <- 'intra.RH';
+  contrasts$case[33] <- 'intra.P85';  contrasts$control[33] <- 'intra.RH'
+  contrasts$case[34] <- 'intra.P148'; contrasts$control[34] <- 'intra.RH'
+  
+  ## RH over Extra (RH.vs.extra)
+  contrasts$case[35] <- 'extra.P11';  contrasts$control[35] <- 'extra.RH'
+  contrasts$case[36] <- 'extra.P35';  contrasts$control[36] <- 'extra.RH'
+  contrasts$case[37] <- 'extra.P55';  contrasts$control[37] <- 'extra.RH'
+  contrasts$case[38] <- 'extra.P85';  contrasts$control[38] <- 'extra.RH';
+  contrasts$case[39] <- 'extra.P148'; contrasts$control[39] <- 'extra.RH';
+  contrasts$case[40] <- 'extra.P210'; contrasts$control[40] <- 'extra.RH'
+  
+  ## RH over B P7 (RH.vs.B)
+  contrasts$case[41] <- 'intra.P7';  contrasts$control[41] <- 'intra.RH'
+  contrasts$case[42] <- 'extra.P7';  contrasts$control[42] <- 'extra.RH'
+  
+  ## B P7 over B P7 (B.extra.vs.B.intra)
+  contrasts$case[43] <- 'intra.P7';  contrasts$control[43] <- 'extra.P7'
   
   return(contrasts)
 }
