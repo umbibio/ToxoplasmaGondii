@@ -1,3 +1,12 @@
-# ToxoplasmaGondii
+# Toxoplasma Transcriptional Program Analysis
 
-## Toxoplasma Gondii Virulence of the parasite Toxoplasma Gondii depends on multiple factors. Although virulence factor expression is tightly regulated, the molecular mechanism controlling their regulation has been poorly understood. In this project we are taking the advantage of several computational approaches to study the regulators of such virulence traits. 
+This page provide instructions for running statistical analysis on preprocessed RNAseq data of toxoplasmaGondii. The analysis are as follows:
+
+* Differentially Expression Analysis
+* Mixed-effect Regression Analysis
+* Enrichment Analysis
+* Clustering Analysis
+
+# Data Availability
+
+The RNAseq read raw counts for each sample (obtained by featureCount) are available at ... . Other data required to run each analysis are provided in the input folder.  
