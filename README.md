@@ -1,11 +1,12 @@
 # Toxoplasma Transcriptional Program Analysis
 
-This page provide instructions for running statistical analysis on preprocessed RNA-Seq laba-adaptation data of toxoplasmaGondii. The analysis are as follows:
+This page provide instructions for running statistical analysis on preprocessed RNA-Seq lab-adaptation data of toxoplasmaGondii. The analysis are as follows:
 
 * Differential Gene Expression Analysis
 * Mixed-effect Regression Analysis
 * Enrichment Analysis
 * Clustering Analysis
+* Life Stage Analysis
 
 # Running the code
 
